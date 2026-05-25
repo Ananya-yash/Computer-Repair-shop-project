@@ -10,6 +10,15 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 
+// Test DB connection on startup
+pool.query('SELECT NOW()', (err, res) => {
+  if (err) {
+    console.error('DB connection failed:', err.message);
+  } else {
+    console.log('DB connected successfully:', res.rows[0]);
+  }
+});
+
 // HOME
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html');
