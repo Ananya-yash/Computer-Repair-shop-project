@@ -74,7 +74,8 @@ app.get('/setup-db', async (req, res) => {
 // LOGIN
 app.post('/login', async (req, res) => {
   const { username, password } = req.body;
-
+  console.log('Login attempt:', username, password); // debug
+  console.log('DB URL:', process.env.DATABASE_URL); // debug
   try {
     const result = await db.query(
       'SELECT * FROM users WHERE username = $1 AND password = $2',
