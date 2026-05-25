@@ -1,4 +1,3 @@
-=======
 # Repair Shop Management System
 
 This project is a full-stack web application designed for managing inventory, tracking transactions, and handling employee access for a computer repair shop. It uses a **Node.js/Express** backend with a **PostgreSQL** database and a responsive, glassmorphism-styled **HTML/CSS/JS** frontend.
