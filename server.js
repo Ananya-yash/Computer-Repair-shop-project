@@ -2,6 +2,14 @@ const express = require('express');
 const cors = require('cors');
 const db = require('./db');
 const pool = require('./db');
+// Test DB connection on startup
+db.query('SELECT NOW()', (err, result) => {
+  if (err) {
+    console.error('❌ DB connection failed:', err.message);
+  } else {
+    console.log('✅ DB connected:', result.rows[0]);
+  }
+});
 const app = express();
 const PORT = process.env.PORT || 3000;
 
