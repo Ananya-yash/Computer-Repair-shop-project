@@ -89,36 +89,36 @@ app.get('/setup-db', async (req, res) => {
 });
 
 // LOGIN
-app.post('/login', async (req, res) => {
-  const { username, password } = req.body;
-  console.log('Login attempt:', username, password); // debug
-  console.log('DB URL:', process.env.DATABASE_URL); // debug
-  try {
-    const result = await db.query(
-      'SELECT * FROM users WHERE username = $1 AND password = $2',
-      [username, password]
-    );
+// app.post('/login', async (req, res) => {
+//   const { username, password } = req.body;
+//   console.log('Login attempt:', username, password); // debug
+//   console.log('DB URL:', process.env.DATABASE_URL); // debug
+//   try {
+//     const result = await db.query(
+//       'SELECT * FROM users WHERE username = $1 AND password = $2',
+//       [username, password]
+//     );
 
-    if (result.rows.length > 0) {
-      res.json({ success: true });
-    } else {
-      res.json({ success: false, message: 'Invalid credentials' });
-    }
-  } catch (err) {
-    res.status(500).json({ success: false, error: err.message });
- }
-});
+//     if (result.rows.length > 0) {
+//       res.json({ success: true });
+//     } else {
+//       res.json({ success: false, message: 'Invalid credentials' });
+//     }
+//   } catch (err) {
+//     res.status(500).json({ success: false, error: err.message });
+//  }
+// });
 // for local login, =(hardcoded — no DB needed):
 
-// app.post('/login', (req, res) => {
-//   const { username, password } = req.body;
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
 
-//   if (username === 'Yash' && password === '3333') {
-//     res.json({ success: true });
-//   } else {
-//     res.json({ success: false, message: 'Invalid credentials' });
-//   }
-// });
+  if (username === 'Yash' && password === '3333') {
+    res.json({ success: true });
+  } else {
+    res.json({ success: false, message: 'Invalid credentials' });
+  }
+});
 
 
 // GET ITEMS
